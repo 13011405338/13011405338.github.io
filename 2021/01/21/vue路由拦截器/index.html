@@ -6,15 +6,15 @@
   
   <title>vue路由拦截器 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="vue路由拦截器请求拦截器  响应拦截器回调">
+  <meta name="description" content="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理123在main.js中import axios from ‘axios’ &#x2F;&#x2F;引入axiosVue.prototype.$http &#x3D; axios &#x2F;&#x2F;配置 请求拦截器当请求时自动调用123456789axios.interceptors.request.use(functio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue路由拦截器">
 <meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="vue路由拦截器请求拦截器  响应拦截器回调">
+<meta property="og:description" content="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理123在main.js中import axios from ‘axios’ &#x2F;&#x2F;引入axiosVue.prototype.$http &#x3D; axios &#x2F;&#x2F;配置 请求拦截器当请求时自动调用123456789axios.interceptors.request.use(functio">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-21T06:59:21.000Z">
-<meta property="article:modified_time" content="2021-01-25T10:20:08.675Z">
+<meta property="article:modified_time" content="2021-01-25T11:09:29.560Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="GIT">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,10 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="vue路由拦截器"><a href="#vue路由拦截器" class="headerlink" title="vue路由拦截器"></a>vue路由拦截器</h1><h2 id="请求拦截器-响应拦截器"><a href="#请求拦截器-响应拦截器" class="headerlink" title="请求拦截器  响应拦截器"></a>请求拦截器  响应拦截器</h2><h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2>
+        <h4 id="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理"><a href="#可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理" class="headerlink" title="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理"></a>可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在main.js中</span><br><span class="line">import axios from ‘axios’ &#x2F;&#x2F;引入axios</span><br><span class="line">Vue.prototype.$http &#x3D; axios &#x2F;&#x2F;配置</span><br></pre></td></tr></table></figure>
+<h3 id="请求拦截器"><a href="#请求拦截器" class="headerlink" title="请求拦截器"></a>请求拦截器</h3><h3 id="当请求时自动调用"><a href="#当请求时自动调用" class="headerlink" title="当请求时自动调用"></a>当请求时自动调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.request.use(function (config) &#123;</span><br><span class="line"> let token &#x3D; window.localStorage.getItem(&quot;token&quot;);</span><br><span class="line">   if (token) &#123;</span><br><span class="line">     config.headers.token &#x3D; token;  &#x2F;&#x2F;将token放到请求头发送给服务器</span><br><span class="line">   &#125;</span><br><span class="line">   return config; &#x2F;&#x2F; 最终需要返回config</span><br><span class="line">  &#125;, function (error) &#123;</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="响应拦截器-在响应时自动会做的操作-，比如状态码返回为401时，要进入login界面"><a href="#响应拦截器-在响应时自动会做的操作-，比如状态码返回为401时，要进入login界面" class="headerlink" title="响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面"></a>响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.response.use(response &#x3D;&gt; &#123;</span><br><span class="line">  return response;</span><br><span class="line">&#125;, error &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error.request.response)</span><br><span class="line">  if (error.request.status &#x3D;&#x3D; 401) &#123;</span><br><span class="line">    window.location.href &#x3D; &quot;&#x2F;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  return error</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
