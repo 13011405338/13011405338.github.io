@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>微博三方登陆 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="首先,先去微博开发平台 注册账号微连接  —  网站接入  获取App Key， App Secret  在设置一个回调地址 这些都是要自己记住的 不要让别人知道 在setting中设置App Key， App Secret 和回调地址123WEIBO_APP_KEY &#x3D; &#39;&#39;  # App KeyWEIBO_APP_SECRET &#x3D; &#39;&#39;  #">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微博三方登陆">
+<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先,先去微博开发平台 注册账号微连接  —  网站接入  获取App Key， App Secret  在设置一个回调地址 这些都是要自己记住的 不要让别人知道 在setting中设置App Key， App Secret 和回调地址123WEIBO_APP_KEY &#x3D; &#39;&#39;  # App KeyWEIBO_APP_SECRET &#x3D; &#39;&#39;  #">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-28T06:50:21.000Z">
+<meta property="article:modified_time" content="2021-01-28T09:42:23.211Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="GIT">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/xuexinpeng/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/xuexinpeng/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/xuexinpeng/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/xuexinpeng/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/xuexinpeng/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/xuexinpeng/">Home</a>
+        
+          <a class="main-nav-link" href="/xuexinpeng/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/xuexinpeng/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xue-xinpeng.gitee.io/xuexinpeng"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-三方登陆" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" class="article-date">
+  <time class="dt-published" datetime="2021-01-28T06:50:21.000Z" itemprop="datePublished">2021-01-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      微博三方登陆
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="首先-先去微博开发平台-注册账号"><a href="#首先-先去微博开发平台-注册账号" class="headerlink" title="首先,先去微博开发平台 注册账号"></a>首先,先去微博开发平台 注册账号</h3><p>微连接  —  网站接入  获取App Key， App Secret  在设置一个回调地址 这些都是要自己记住的 不要让别人知道</p>
+<h3 id="在setting中设置App-Key，-App-Secret-和回调地址"><a href="#在setting中设置App-Key，-App-Secret-和回调地址" class="headerlink" title="在setting中设置App Key， App Secret 和回调地址"></a>在setting中设置App Key， App Secret 和回调地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WEIBO_APP_KEY &#x3D; &#39;&#39;  # App Key</span><br><span class="line">WEIBO_APP_SECRET &#x3D; &#39;&#39;  # App Secret</span><br><span class="line">WEIBO_REDIRECT_URL &#x3D; &#39;&#39;  # 回调地址</span><br></pre></td></tr></table></figure>
+<p>生成微博登陆地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class GetWEIBOurl(APIView):</span><br><span class="line">    # 生成微博的登陆地址</span><br><span class="line">    def get(self, request):</span><br><span class="line">        return Response(WEIBO_URL % (WEIBO_APP_KEY, WEIBO_REDIRECT_URL))</span><br></pre></td></tr></table></figure>
+<p>微博会返回你一个code值 判断是否存在数据库 没有就是新用户 可以绑定到自己的账户,绑定的直接登陆即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class GetWeiboToken(APIView):</span><br><span class="line"></span><br><span class="line">    def get(self, request, code):</span><br><span class="line">        data &#x3D; &#123;</span><br><span class="line">            &#39;client_id&#39;: WEIBO_APP_KEY,</span><br><span class="line">            &#39;client_secret&#39;: WEIBO_APP_SECRET,</span><br><span class="line">            &#39;grant_type&#39;: &#39;authorization_code&#39;,</span><br><span class="line">            &#39;code&#39;: code,</span><br><span class="line">            &#39;redirect_uri&#39;: WEIBO_REDIRECT_URL</span><br><span class="line">        &#125;</span><br><span class="line">        url &#x3D; &#39;https:&#x2F;&#x2F;api.weibo.com&#x2F;oauth2&#x2F;access_token&#39;</span><br><span class="line">        req &#x3D; requests.post(url, data&#x3D;data).text</span><br><span class="line">        uid &#x3D; json.loads(req).get(&#39;uid&#39;)</span><br><span class="line">        if not uid:</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &#39;code&#39;: 500,</span><br><span class="line">                &#39;msg&#39;: &#39;请重新扫码&#39;</span><br><span class="line">            &#125;)</span><br><span class="line">        try:</span><br><span class="line">            weibo &#x3D; WeiBo.objects.get(uid&#x3D;uid)</span><br><span class="line">        except:</span><br><span class="line">            # 没有在平台中绑定，需要绑定一下</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &#39;code&#39;: 404,</span><br><span class="line">                &#39;uid&#39;: uid,</span><br><span class="line">            &#125;)</span><br><span class="line">        else:</span><br><span class="line">            # 这个用户是三方绑定过的，直接可以登陆</span><br><span class="line">            user &#x3D; weibo.user</span><br><span class="line">            pa &#x3D; &#123;</span><br><span class="line">                &#39;exp&#39;: datetime.datetime.utcnow() + datetime.timedelta(hours&#x3D;1),</span><br><span class="line">                &#39;user_id&#39;: user.id,</span><br><span class="line">            &#125;</span><br><span class="line">            token &#x3D; jwt.encode(payload&#x3D;pa, key&#x3D;&#39;abc&#39;)</span><br><span class="line">            return Response(&#123;</span><br><span class="line">                &#39;code&#39;: 200,</span><br><span class="line">                &#39;token&#39;: token,</span><br><span class="line">                &#39;user_name&#39;: user.username,</span><br><span class="line">                &#39;user_phone&#39;: user.phone,</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" data-id="ckkgo6czz00026cah4hrj08dg" data-title="微博三方登陆" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue父子组件传参</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/xuexinpeng/categories/GIT/">GIT</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/xuexinpeng/tags/GIT/" style="font-size: 10px;">GIT</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xuexinpeng/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/">微博三方登陆</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">vue父子组件传参</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">vue路由钩子</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/">vue路由拦截器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/xuexinpeng/" class="mobile-nav-link">Home</a>
+  
+    <a href="/xuexinpeng/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/xuexinpeng/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/xuexinpeng/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/xuexinpeng/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
