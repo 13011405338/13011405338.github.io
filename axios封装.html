@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vue axios封装 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="新建一个http的文件夹 里面有两个文件 一个api.js  一个index.jsindex.js文件 用于写axios的封装要先定义新的axios 1const axios &#x3D; require(&#39;axios&#39;) get的封装  params是携带的参数123456789export function get(url, params, headers) &amp;#123;  r">
+<meta property="og:type" content="website">
+<meta property="og:title" content="vue axios封装">
+<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/axios%E5%B0%81%E8%A3%85.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="新建一个http的文件夹 里面有两个文件 一个api.js  一个index.jsindex.js文件 用于写axios的封装要先定义新的axios 1const axios &#x3D; require(&#39;axios&#39;) get的封装  params是携带的参数123456789export function get(url, params, headers) &amp;#123;  r">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-29T10:28:43.000Z">
+<meta property="article:modified_time" content="2021-01-31T10:05:09.034Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/xuexinpeng/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/xuexinpeng/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/xuexinpeng/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/xuexinpeng/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/xuexinpeng/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/xuexinpeng/">Home</a>
+        
+          <a class="main-nav-link" href="/xuexinpeng/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/xuexinpeng/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xue-xinpeng.gitee.io/xuexinpeng"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/xuexinpeng/axios%E5%B0%81%E8%A3%85.html" class="article-date">
+  <time class="dt-published" datetime="2021-01-29T10:28:43.000Z" itemprop="datePublished">2021-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vue axios封装
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js"><a href="#新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js" class="headerlink" title="新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js"></a>新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js</h3><h3 id="index-js文件-用于写axios的封装"><a href="#index-js文件-用于写axios的封装" class="headerlink" title="index.js文件 用于写axios的封装"></a>index.js文件 用于写axios的封装</h3><p>要先定义新的axios</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const axios &#x3D; require(&#39;axios&#39;)</span><br></pre></td></tr></table></figure>
+<h3 id="get的封装-params是携带的参数"><a href="#get的封装-params是携带的参数" class="headerlink" title="get的封装  params是携带的参数"></a>get的封装  params是携带的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export function get(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(err &#x3D;&gt; &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="post的封装"><a href="#post的封装" class="headerlink" title="post的封装"></a>post的封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export function post(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.post(url, params, headers).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch((err) &#x3D;&gt; &#123;</span><br><span class="line">      &#x2F;&#x2F; debugger</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="api-js-用于写接口-要先引入-index-js"><a href="#api-js-用于写接口-要先引入-index-js" class="headerlink" title="api.js 用于写接口  要先引入 index.js"></a>api.js 用于写接口  要先引入 index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;get, post, put, del&#125; from &#39;.&#x2F;index&#39;</span><br><span class="line"></span><br><span class="line">export const signUp &#x3D; parameter &#x3D;&gt; &#123;</span><br><span class="line">  return post(</span><br><span class="line">    &#39;signup&#x2F;&#39;,</span><br><span class="line">    parameter,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/axios%E5%B0%81%E8%A3%85.html" data-id="ckkkzav6o00001oahcqy0h0dm" data-title="vue axios封装" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/xuexinpeng/categories/GIT/">GIT</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/xuexinpeng/tags/GIT/" style="font-size: 10px;">GIT</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xuexinpeng/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/29/celery/">celery异步框架</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/29/%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/">三方支付</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/">微博三方登陆</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">vue父子组件传参</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">vue路由钩子</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/xuexinpeng/" class="mobile-nav-link">Home</a>
+  
+    <a href="/xuexinpeng/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/xuexinpeng/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/xuexinpeng/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/xuexinpeng/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
