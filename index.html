@@ -97,11 +97,24 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="什么是webshell"><a href="#什么是webshell" class="headerlink" title="什么是webshell ?"></a>什么是webshell ?</h2><p>shell是一个集成了一堆linux命令的控制台界面</p>
+<h3 id="安装xterm"><a href="#安装xterm" class="headerlink" title="安装xterm"></a>安装xterm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install xterm@3.1.0 --save</span><br></pre></td></tr></table></figure>
+<h3 id="导入css样式-main-js"><a href="#导入css样式-main-js" class="headerlink" title="导入css样式,main.js"></a>导入css样式,main.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#39;xterm&#x2F;dist&#x2F;xterm.css&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="在页面里放入一个id对的上的div"><a href="#在页面里放入一个id对的上的div" class="headerlink" title="在页面里放入一个id对的上的div"></a>在页面里放入一个id对的上的div</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;terminal&quot;&gt;</span><br><span class="line">&lt;!--            黑窗口--&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Terminal &#125; from &#39;xterm&#39;</span><br><span class="line">import * as attach from &#39;xterm&#x2F;lib&#x2F;addons&#x2F;attach&#x2F;attach&#39; &#x2F;&#x2F; 安装插件适，可以使用attach去添加</span><br><span class="line">import * as fit from &#39;xterm&#x2F;lib&#x2F;addons&#x2F;fit&#x2F;fit&#39; &#x2F;&#x2F; fit进行自适应大小的</span><br><span class="line"></span><br><span class="line">Terminal.applyAddon(attach) &#x2F;&#x2F; 添加插件</span><br><span class="line">Terminal.applyAddon(fit) &#x2F;&#x2F; 添加插件</span><br></pre></td></tr></table></figure>
+<h3 id="mounted初始化div标签id为terminal对象，成为一个真正的黑窗口"><a href="#mounted初始化div标签id为terminal对象，成为一个真正的黑窗口" class="headerlink" title="mounted初始化div标签id为terminal对象，成为一个真正的黑窗口"></a>mounted初始化div标签id为terminal对象，成为一个真正的黑窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取到了div标签</span><br><span class="line">let terminalContainer &#x3D; document.getElementById(&#39;terminal&#39;)</span><br><span class="line">&#x2F;&#x2F; 初始化黑窗口对象</span><br><span class="line">this.term &#x3D; new Terminal(this.terminal)</span><br><span class="line">&#x2F;&#x2F; 打开这个对象</span><br><span class="line">this.term.open(terminalContainer)</span><br></pre></td></tr></table></figure>
+<h2 id="vue连接webshell"><a href="#vue连接webshell" class="headerlink" title="vue连接webshell ?"></a>vue连接webshell ?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">new WebSocket(&#39;ws:&#x2F;&#x2F;127.0.0.1:8000&#x2F;webssh&#x2F;&#39;)</span><br><span class="line"></span><br><span class="line">this.terminalSocket &#x3D; new WebSocket(&#39;ws:&#x2F;&#x2F;127.0.0.1:8000&#x2F;webssh&#x2F;&#39;)</span><br><span class="line">this.terminalSocket.onopen &#x3D; function()&#123; &#x2F;&#x2F; 连接成功触发该方法</span><br><span class="line">console.log(&#39;websocket is Connected...&#39;)</span><br><span class="line">&#125;</span><br><span class="line">this.terminalSocket.onclose &#x3D; function()&#123; &#x2F;&#x2F; 连接关闭适触发的方法</span><br><span class="line">console.log(&#39;websocket is Closed...&#39;)</span><br><span class="line">&#125;</span><br><span class="line">this.terminalSocket.onerror &#x3D; function()&#123; &#x2F;&#x2F; 连接出错触发的方法</span><br><span class="line">console.log(&#39;damn Websocket is broken!&#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绑定黑窗口"><a href="#绑定黑窗口" class="headerlink" title="绑定黑窗口"></a>绑定黑窗口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.term.attach(this.terminalSocket)</span><br></pre></td></tr></table></figure>
+<h2 id="django接收websocket"><a href="#django接收websocket" class="headerlink" title="django接收websocket"></a>django接收websocket</h2><h3 id="下载dwebsocket"><a href="#下载dwebsocket" class="headerlink" title="下载dwebsocket"></a>下载dwebsocket</h3><p>pip3 install dwebsocket</p>
+<h3 id="settings安装该模块，INSTALL-APPS"><a href="#settings安装该模块，INSTALL-APPS" class="headerlink" title="settings安装该模块，INSTALL_APPS"></a>settings安装该模块，INSTALL_APPS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@accept_websocket</span><br><span class="line">def webssh(request):</span><br><span class="line">    # 1. 获取到连接对象</span><br><span class="line">    ws &#x3D; request.websocket</span><br><span class="line">    while 1:  # 主线程: 只管发送</span><br><span class="line">      	# 2. 阻塞ws接收发来的数据</span><br><span class="line">      	cmd &#x3D; ws.wait()</span><br><span class="line">      	if cmd:</span><br><span class="line">        		channel.send(cmd)  # 发送到linux 去执行</span><br><span class="line">        else:  # 如果连接断开，那么cmd将会发一个空包</span><br><span class="line">          	break</span><br><span class="line">   	recv_thread.join()  # 回收子线程</span><br><span class="line">   	ws.close()  # 关闭ws连接</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="如何发送输入来的cmd给linux呢"><a href="#如何发送输入来的cmd给linux呢" class="headerlink" title="如何发送输入来的cmd给linux呢"></a>如何发送输入来的cmd给linux呢</h2><h3 id="黑窗口进入python输入"><a href="#黑窗口进入python输入" class="headerlink" title="黑窗口进入python输入"></a>黑窗口进入python输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install paramiko</span><br></pre></td></tr></table></figure>
+<h3 id="paramiko如何连接linux"><a href="#paramiko如何连接linux" class="headerlink" title="paramiko如何连接linux"></a>paramiko如何连接linux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def make_ssh(host, username, password, port&#x3D;22):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :host 主机地址</span><br><span class="line">    :username 用户名，一般是root</span><br><span class="line">    :password 密码</span><br><span class="line">    :port ssh协议的端口,22</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # 初始化一个ssh对象</span><br><span class="line">    sh &#x3D; paramiko.SSHClient()</span><br><span class="line">    # 设置对象连接密钥规则</span><br><span class="line">    sh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">    # 连接</span><br><span class="line">    sh.connect(host, username&#x3D;username, password&#x3D;password)</span><br><span class="line">    # 生成shell对象，把命令执行结果，模拟成一个终端的返回，带上花里胡哨的颜色</span><br><span class="line">    channle &#x3D; sh.invoke_shell(term&#x3D;&#39;xterm&#39;)</span><br><span class="line">    return channle</span><br></pre></td></tr></table></figure>
+<h3 id="编写子线程方法，接收命令"><a href="#编写子线程方法，接收命令" class="headerlink" title="编写子线程方法，接收命令"></a>编写子线程方法，接收命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def recv_ssh_msg(channle, ws):</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">        channle: 建立好的SSH连接通道</span><br><span class="line">        这个函数会不停的接收ssh通道返回的命令</span><br><span class="line">        返回到前端的ws套接字里</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    # 判断shell连接对象是否没有退出</span><br><span class="line">    while not channle.exit_status_ready():</span><br><span class="line">      	# 接收过程可能会因为没有任何返回而报错</span><br><span class="line">        try:</span><br><span class="line">            buf &#x3D; channle.recv(1024) # 接收命令的执行结果</span><br><span class="line">            ws.send(buf) # 向Websocket通道返回</span><br><span class="line">        # 接收不到会报错，但是报错没关系，继续重新尝试接受</span><br><span class="line">        except:</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/03/webshell/" data-id="ckkpee2w30009esah93sp0gu3" data-title="Webshell" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/03/webshell/" data-id="ckkpf12oh000ceoah1utgdkan" data-title="Webshell" class="article-share-link">Share</a>
       
       
       
@@ -155,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" data-id="ckkpee2vw0003esahdlgb7suc" data-title="Redis键空间事件" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" data-id="ckkpf12o90002eoah6jl85pi8" data-title="Redis键空间事件" class="article-share-link">Share</a>
       
       
       
@@ -210,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" data-id="ckkpee2wb000kesah44ckhykx" data-title="Redis的发布和订阅" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" data-id="ckkpf12ok000keoah3v3431se" data-title="Redis的发布和订阅" class="article-share-link">Share</a>
       
       
       
@@ -254,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/" data-id="ckkpee2uv0000esahgeesey8z" data-title="vue axios封装" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/" data-id="ckkpf12o30000eoah7tct4wfr" data-title="vue axios封装" class="article-share-link">Share</a>
       
       
       
@@ -299,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/celery/" data-id="ckkpee2vm0001esah83j56e1m" data-title="celery异步框架" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/celery/" data-id="ckkpf12o80001eoaha3du0qo0" data-title="celery异步框架" class="article-share-link">Share</a>
       
       
       
@@ -349,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" data-id="ckkpee2w7000desah6qro0lqv" data-title="三方支付" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" data-id="ckkpf12oi000eeoah176qejq6" data-title="三方支付" class="article-share-link">Share</a>
       
       
       
@@ -396,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" data-id="ckkpee2w8000fesahbhyge9tv" data-title="微博三方登陆" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" data-id="ckkpf12ok000heoahg6f562yb" data-title="微博三方登陆" class="article-share-link">Share</a>
       
       
       
@@ -457,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" data-id="ckkpee2vx0004esaha4jed6tm" data-title="vue父子组件传参" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" data-id="ckkpf12od0006eoahbxfp92ni" data-title="vue父子组件传参" class="article-share-link">Share</a>
       
       
       
@@ -504,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" data-id="ckkpee2w10007esahg28r6b1g" data-title="vue路由钩子" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" data-id="ckkpf12of0008eoah8mkq0wzr" data-title="vue路由钩子" class="article-share-link">Share</a>
       
       
       
@@ -553,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/25/hello-world/" data-id="ckkpee2vo0002esahe54v8lr0" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/25/hello-world/" data-id="ckkpf12oa0003eoah4hbzgek8" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
