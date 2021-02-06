@@ -71,6 +71,171 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker操作,容器,镜像" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/xuexinpeng/2021/02/06/docker%E6%93%8D%E4%BD%9C,%E5%AE%B9%E5%99%A8,%E9%95%9C%E5%83%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-02-06T06:50:21.000Z" itemprop="datePublished">2021-02-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/xuexinpeng/2021/02/06/docker%E6%93%8D%E4%BD%9C,%E5%AE%B9%E5%99%A8,%E9%95%9C%E5%83%8F/">docker操作 容器,镜像,dockerfile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="docker容器"><a href="#docker容器" class="headerlink" title="docker容器"></a>docker容器</h1><p>容器是镜像的一个运行实例。所不同的是，镜像是静态的只读文件，而容器带有运行时需要的可写文件层。如果认为虚拟机是模拟运行的一整套操作系统（包括内核、应用运行态环境和其他系统环境）和跑在上面的应用，那么Docker容器就是独立运行的一个（或一组）应用，以及它们必需的运行环境。</p>
+<h3 id="下载容器"><a href="#下载容器" class="headerlink" title="下载容器"></a>下载容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<h3 id="查看docker状态-绿色启动-灰色停止"><a href="#查看docker状态-绿色启动-灰色停止" class="headerlink" title="查看docker状态 绿色启动 灰色停止"></a>查看docker状态 绿色启动 灰色停止</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+<h1 id="docker镜像"><a href="#docker镜像" class="headerlink" title="docker镜像"></a>docker镜像</h1><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure>
+<h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h3 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile?"></a>什么是dockerfile?</h3><p>Dockerfile是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker通过读取Dockerfile中的指令自动生成映像。<br>docker build命令用于从Dockerfile构建映像。可以在docker build命令中使用-f标志指向文件系统中任何位置的Dockerfile。</p>
+<h3 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h3><p>Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。</p>
+<h3 id="Dockerfile文件说明"><a href="#Dockerfile文件说明" class="headerlink" title="Dockerfile文件说明"></a>Dockerfile文件说明</h3><p>Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。</p>
+<h3 id="FROM：指定基础镜像，必须为第一个命令"><a href="#FROM：指定基础镜像，必须为第一个命令" class="headerlink" title="FROM：指定基础镜像，必须为第一个命令"></a>FROM：指定基础镜像，必须为第一个命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">　　FROM &lt;image&gt;</span><br><span class="line">　　FROM &lt;image&gt;:&lt;tag&gt;</span><br><span class="line">　　FROM &lt;image&gt;@&lt;digest&gt;</span><br><span class="line">示例：</span><br><span class="line">　　FROM mysql:5.6</span><br><span class="line">注：</span><br><span class="line">　　tag或digest是可选的，如果不使用这两个值时，会使用latest版本的基础镜像</span><br></pre></td></tr></table></figure>
+<h3 id="MAINTAINER-维护者信息"><a href="#MAINTAINER-维护者信息" class="headerlink" title="MAINTAINER: 维护者信息"></a>MAINTAINER: 维护者信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">    MAINTAINER &lt;name&gt;</span><br><span class="line">示例：</span><br><span class="line">    MAINTAINER Jasper Xu</span><br><span class="line">    MAINTAINER sorex@163.com</span><br><span class="line">    MAINTAINER Jasper Xu &lt;sorex@163.com&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/06/docker%E6%93%8D%E4%BD%9C,%E5%AE%B9%E5%99%A8,%E9%95%9C%E5%83%8F/" data-id="ckktxl6zg0002jwahhljefeo8" data-title="docker操作 容器,镜像,dockerfile" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-视频直播" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/xuexinpeng/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/" class="article-date">
+  <time class="dt-published" datetime="2021-02-05T06:50:21.000Z" itemprop="datePublished">2021-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/xuexinpeng/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/">视频直播</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="HTTP-FLV环境部署"><a href="#HTTP-FLV环境部署" class="headerlink" title="HTTP-FLV环境部署"></a>HTTP-FLV环境部署</h2><h3 id="创建保存文件的文件夹"><a href="#创建保存文件的文件夹" class="headerlink" title="创建保存文件的文件夹"></a>创建保存文件的文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;usr&#x2F;local&#x2F;nginx-flv</span><br><span class="line"># 创建了一个安装目录</span><br><span class="line">mkdir &#x2F;home&#x2F;flv-tools</span><br><span class="line"># 存储所需软件</span><br></pre></td></tr></table></figure>
+<h3 id="下载nginx"><a href="#下载nginx" class="headerlink" title="下载nginx"></a>下载nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.18.0.tar.gz </span><br></pre></td></tr></table></figure>
+<h3 id="下载直播模块"><a href="#下载直播模块" class="headerlink" title="下载直播模块"></a>下载直播模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;winshining&#x2F;nginx-http-flv-module</span><br></pre></td></tr></table></figure>
+<h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar 文件名</span><br><span class="line">unzip 文件名</span><br></pre></td></tr></table></figure>
+<h3 id="进入解压好的nginx下目录，并进行安装前的配置"><a href="#进入解压好的nginx下目录，并进行安装前的配置" class="headerlink" title="进入解压好的nginx下目录，并进行安装前的配置"></a>进入解压好的nginx下目录，并进行安装前的配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd nginx-1.18.0</span><br><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx-flv --add-module&#x3D;&#x2F;home&#x2F;flv-tools&#x2F;nginx-http-flv-module-master</span><br><span class="line"># --prefix: 配置安装路径</span><br><span class="line">#--add-module: 添加安装插件</span><br></pre></td></tr></table></figure>
+<h3 id="编译及安装"><a href="#编译及安装" class="headerlink" title="编译及安装"></a>编译及安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install </span><br></pre></td></tr></table></figure>
+<h3 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">rtmp_auto_push on;</span><br><span class="line">rtmp_auto_push_reconnect 1s;</span><br><span class="line">rtmp_socket_dir &#x2F;tmp;</span><br><span class="line"></span><br><span class="line">rtmp&#123;</span><br><span class="line">	out_queue 4096;</span><br><span class="line">	out_cork 8;</span><br><span class="line">	max_streams 128;</span><br><span class="line">	timeout 15s;</span><br><span class="line">	drop_idle_publisher 15s;</span><br><span class="line">	log_interval 5s;</span><br><span class="line">	log_size 1m;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen 1935; # 推流端口</span><br><span class="line">		server_name zege;</span><br><span class="line">		</span><br><span class="line">		application live &#123;	# 配置推流地址</span><br><span class="line">			live on; # 打开推流</span><br><span class="line">			# gop_cache on;</span><br><span class="line">			# rtmp:&#x2F;&#x2F;123.123.123.123:1935&#x2F;live&#x2F;test</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置文件http拉流部分"><a href="#配置文件http拉流部分" class="headerlink" title="配置文件http拉流部分"></a>配置文件http拉流部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">	include       mime.types;</span><br><span class="line">	default_type  application&#x2F;octet-stream;</span><br><span class="line">	sendfile        on;</span><br><span class="line">	keepalive_timeout  65;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen       8080; # 拉流通过8080去拉流</span><br><span class="line">		# http:&#x2F;&#x2F;123.123.123.123:8080&#x2F;live&#x2F;?port&#x3D;1935&amp;stream&#x3D;test</span><br><span class="line">		server_name  localhost;</span><br><span class="line">		location &#x2F;live &#123;</span><br><span class="line">			flv_live on;</span><br><span class="line">			chunked_transfer_encoding  on;</span><br><span class="line">			add_header &#39;Access-Control-Allow-Origin&#39; &#39;*&#39;;</span><br><span class="line">			add_header &#39;Access-Control-Allow-Credentials&#39; &#39;true&#39;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关闭旧有服务"><a href="#关闭旧有服务" class="headerlink" title="关闭旧有服务"></a>关闭旧有服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;nginx-rtmp&#x2F;sbin&#x2F;nginx -s stop</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;nginx-rtmp&#x2F;sbin&#x2F;nginx -s reload</span><br><span class="line"># 重启</span><br></pre></td></tr></table></figure>
+<h3 id="开启新服务"><a href="#开启新服务" class="headerlink" title="开启新服务"></a>开启新服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;nginx-flv&#x2F;sbin&#x2F;nginx -c &#x2F;usr&#x2F;local&#x2F;nginx-flv&#x2F;conf&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+<h1 id="vue实现拉流"><a href="#vue实现拉流" class="headerlink" title="vue实现拉流"></a>vue实现拉流</h1><h3 id="安装flv-js开源工具，进行拉流"><a href="#安装flv-js开源工具，进行拉流" class="headerlink" title="安装flv.js开源工具，进行拉流"></a>安装flv.js开源工具，进行拉流</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install flv.js --save</span><br></pre></td></tr></table></figure>
+<h3 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import flv from &#39;flv.js&#39;;</span><br></pre></td></tr></table></figure>
+<h3 id="构建页面标签，播放标签"><a href="#构建页面标签，播放标签" class="headerlink" title="构建页面标签，播放标签"></a>构建页面标签，播放标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video id&#x3D;&quot;videoElement&quot; controls muted&gt;</span><br><span class="line">  	Your browser is too old which doesn&#39;t support HTML5 video.</span><br><span class="line">&lt;&#x2F;video&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="进行初始化"><a href="#进行初始化" class="headerlink" title="进行初始化"></a>进行初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  mounted() &#123;</span><br><span class="line">    var videoElement &#x3D; document.getElementById(&#39;videoElement&#39;);</span><br><span class="line">    var flvPlayer &#x3D; flv.createPlayer(&#123;</span><br><span class="line">      type: &#39;flv&#39;,</span><br><span class="line">      enableWorker: true,     &#x2F;&#x2F;浏览器端开启flv.js的worker,多进程运行flv.js</span><br><span class="line">      isLive: true,           &#x2F;&#x2F;直播模式</span><br><span class="line">      hasAudio: false,        &#x2F;&#x2F;关闭音频</span><br><span class="line">      hasVideo: true,</span><br><span class="line">      &#x2F;&#x2F; cors: true,</span><br><span class="line">      stashInitialSize: 128,</span><br><span class="line">      enableStashBuffer: false, &#x2F;&#x2F;播放flv时，设置是否启用播放缓存，只在直播起作用。</span><br><span class="line">      &#x2F;&#x2F; url: &#39;http:&#x2F;&#x2F;192.168.2.234&#x2F;flv&#x2F;323223618780001&#39;</span><br><span class="line">      &#x2F;&#x2F; url: &#39;http:&#x2F;&#x2F;39.105.79.238:8080&#x2F;live?port&#x3D;1935&amp;app&#x3D;live&amp;stream&#x3D;test&#39;</span><br><span class="line">      url: &#39;http:&#x2F;&#x2F;47.93.48.154:8080&#x2F;live?port&#x3D;1935&amp;app&#x3D;live&amp;stream&#x3D;test&#39;</span><br><span class="line">    &#125;)</span><br><span class="line">    flvPlayer.attachMediaElement(videoElement);</span><br><span class="line">    flvPlayer.load();</span><br><span class="line">    flvPlayer.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/" data-id="ckktxl721000sjwahalk0e2gm" data-title="视频直播" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-无限极分类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-02-04T06:50:21.000Z" itemprop="datePublished">2021-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/">无限极分类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="自关联-递归"><a href="#自关联-递归" class="headerlink" title="自关联 递归"></a>自关联 递归</h2><p>无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去,一下是地区的案例</p>
+<h3 id="首先先建模"><a href="#首先先建模" class="headerlink" title="首先先建模"></a>首先先建模</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class AdressInfo(models.Model):</span><br><span class="line">address &#x3D; models.CharField(max_length &#x3D; 200, null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘地址’)</span><br><span class="line">pid &#x3D; models.ForeignKey(‘self’ , null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘自关联’)</span><br><span class="line">def __str__(self):</span><br><span class="line">return self.adress</span><br></pre></td></tr></table></figure>
+<h3 id="迁移数据库"><a href="#迁移数据库" class="headerlink" title="迁移数据库"></a>迁移数据库</h3><h3 id="url路由"><a href="#url路由" class="headerlink" title="url路由"></a>url路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns &#x3D; [</span><br><span class="line">url(r&#39;^addr&#x2F;(d+)$&#39;, Address.addrAPI, name &#x3D; &#39;Addr)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def addrAPI(request,addr_id): # 接收一个参数的id，指model中的pid属性对应的字段</span><br><span class="line">    if (int(addr_id) &#x3D;&#x3D; 0): # 为0表示查询省，省的pid_id为null</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid__isnull &#x3D; True).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">    else: # 查询市或其他县</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid_id &#x3D; int(addr_id)).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">        area_list &#x3D; []</span><br><span class="line">    for a in address_data:</span><br><span class="line">        area_list.append(&#123;&#39;id&#39;:a[&#39;id&#39;], &#39;address&#39;:a[&#39;address&#39;]&#125;)</span><br><span class="line">    return JsonResponse(area_list, safe &#x3D; False)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/" data-id="ckktxl72d000tjwah5mefd6fu" data-title="无限极分类" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-webshell" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/xuexinpeng/2021/02/03/webshell/" class="article-date">
@@ -114,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/03/webshell/" data-id="ckkpf12oh000ceoah1utgdkan" data-title="Webshell" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/03/webshell/" data-id="ckktxl70z000ejwahcpi31xp7" data-title="Webshell" class="article-share-link">Share</a>
       
       
       
@@ -168,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" data-id="ckkpf12o90002eoah6jl85pi8" data-title="Redis键空间事件" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/redis%E9%94%AE%E7%A9%BA%E9%97%B4/" data-id="ckktxl7010007jwahf4pehm5k" data-title="Redis键空间事件" class="article-share-link">Share</a>
       
       
       
@@ -223,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" data-id="ckkpf12ok000keoah3v3431se" data-title="Redis的发布和订阅" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/" data-id="ckktxl72h000vjwah3f0bf33h" data-title="Redis的发布和订阅" class="article-share-link">Share</a>
       
       
       
@@ -267,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/" data-id="ckkpf12o30000eoah7tct4wfr" data-title="vue axios封装" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/" data-id="ckktxl6yx0000jwah42ciay70" data-title="vue axios封装" class="article-share-link">Share</a>
       
       
       
@@ -312,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/celery/" data-id="ckkpf12o80001eoaha3du0qo0" data-title="celery异步框架" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/celery/" data-id="ckktxl6za0001jwah99mx1bkq" data-title="celery异步框架" class="article-share-link">Share</a>
       
       
       
@@ -362,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" data-id="ckkpf12oi000eeoah176qejq6" data-title="三方支付" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/29/%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" data-id="ckktxl71w000rjwah46hk1lgb" data-title="三方支付" class="article-share-link">Share</a>
       
       
       
@@ -409,167 +574,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" data-id="ckkpf12ok000heoahg6f562yb" data-title="微博三方登陆" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/28/%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/" data-id="ckktxl72l000xjwah23u2gklh" data-title="微博三方登陆" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vue父子组件传参" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" class="article-date">
-  <time class="dt-published" datetime="2021-01-27T06:55:21.000Z" itemprop="datePublished">2021-01-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/">vue父子组件传参</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="vue中经常用到组件-组件的好处是"><a href="#vue中经常用到组件-组件的好处是" class="headerlink" title="vue中经常用到组件,组件的好处是"></a>vue中经常用到组件,组件的好处是</h2><p>1、如果有一个功能很多地方都会用到，写成一个组件就不用重复写这个功能了；<br>2、页面内容会简洁一些；方便管控；</p>
-<p>这个是父子组件传参的两种方法</p>
-<h2 id="第一种-使用props"><a href="#第一种-使用props" class="headerlink" title="第一种 使用props"></a>第一种 使用props</h2><p>父页面：parent.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">     &lt;div class&#x3D;&quot;sidebar_contianer&quot;&gt;</span><br><span class="line">         &lt;sidebar-item :routerData&#x3D;&quot;transmitData&quot;&gt;&lt;&#x2F;sidebar-item&gt;</span><br><span class="line">     &lt;&#x2F;div&gt;</span><br><span class="line"> &lt;&#x2F;template&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line"> import sidebarItem from &#39;.&#x2F;sidebarItem&#39;</span><br><span class="line"> export default &#123;</span><br><span class="line">     data()&#123;</span><br><span class="line">         return&#123;</span><br><span class="line">             transmitData:&#123;</span><br><span class="line">                 title:&#39;首页&#39;,</span><br><span class="line">                 uuid:&#39;123&#39;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     components:&#123;</span><br><span class="line">         sidebarItem</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>第一步：用import引入子组件</p>
-<p>第二步：在components中注入子组件</p>
-<p>第三步：在子组件中定义一个指令:routerData=”transmitData”  （routerData名称需要和子组件中的props保持一致,transmitData是要传递给子组件的数据）</p>
-<p>子页面：child.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"> export default &#123;</span><br><span class="line">     name:&#39;sidebarItem&#39;,</span><br><span class="line">     props:&#123;</span><br><span class="line">         transmitData:&#123;</span><br><span class="line">             type:Object,</span><br><span class="line">             default:null</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>第四步：在子组件中定义props属性，transmitData的type可以自定义类型（但是必须和父组件中的数据类型一致，否则会报错），default是默认值</p>
-<h2 id="第二种使用-emit"><a href="#第二种使用-emit" class="headerlink" title="第二种使用$emit"></a>第二种使用$emit</h2><p>子页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt; </span><br><span class="line">    &lt;div class&#x3D;&quot;testCom&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;message&quot; &#x2F;&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;click&quot;&gt;发送消息给父组件&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">          message: &#39;我是来自子组件的消息&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      click() &#123;</span><br><span class="line">            &#x2F;&#x2F;1、childFn 组件方法名，父组件中用childFn方法接收子组件中的数据；2、message是传递给父组件的数据</span><br><span class="line">            this.$emit(&#39;childFn&#39;, this.message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>第一步：this.$emit(“方法名”,”传递给父组件的数据”)</p>
-<p>父页面：b.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;child-com @childFn&#x3D;&quot;parentFn&quot;&gt;&lt;&#x2F;child-com&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: &#39;&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">       parentFn(childData) &#123;</span><br><span class="line">        this.message &#x3D; childData;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>第二步：父组件中注入子组件（此处代码中省略，如要参考请看情况一）</p>
-<p>第三步：定义方法childFn（必须和子组件中方法名一致），parentFn定义可随意。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" data-id="ckkpf12od0006eoahbxfp92ni" data-title="vue父子组件传参" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vue路由钩子" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" class="article-date">
-  <time class="dt-published" datetime="2021-01-26T06:59:21.000Z" itemprop="datePublished">2021-01-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/xuexinpeng/categories/GIT/">GIT</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/">vue路由钩子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="路由钩子"><a href="#路由钩子" class="headerlink" title="路由钩子"></a>路由钩子</h2><p>在某些情况下，当路由跳转前或跳转后、进入、离开某一个路由前、后，需要做某些操作，就可以使用路由钩子来监听路由的变化<br>全局路由钩子：router.beforeEach 注册一个全局前置守卫</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span><br><span class="line">  console.log(&#39;beforeEach&#39;)</span><br><span class="line">  console.log(to,from)</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">router.afterEach((to, from) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;会在任意路由跳转后执行</span><br><span class="line">  console.log(&#39;afterEach&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>单个路由钩子：<br>只有beforeEnter，在进入前执行，to参数就是当前路由</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">   &#123;</span><br><span class="line">     path: &#39;&#x2F;foo&#39;,</span><br><span class="line">     component: Foo,</span><br><span class="line">     beforeEnter: (to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">       &#x2F;&#x2F; ...</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" data-id="ckkpf12of0008eoah8mkq0wzr" data-title="vue路由钩子" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xuexinpeng/tags/GIT/" rel="tag">GIT</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/xuexinpeng/2021/01/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-01-25T09:32:16.476Z" itemprop="datePublished">2021-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/xuexinpeng/2021/01/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/25/hello-world/" data-id="ckkpf12oa0003eoah4hbzgek8" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -635,23 +645,23 @@
       <ul>
         
           <li>
+            <a href="/xuexinpeng/2021/02/06/docker%E6%93%8D%E4%BD%9C,%E5%AE%B9%E5%99%A8,%E9%95%9C%E5%83%8F/">docker操作 容器,镜像,dockerfile</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/">视频直播</a>
+          </li>
+        
+          <li>
+            <a href="/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/">无限极分类</a>
+          </li>
+        
+          <li>
             <a href="/xuexinpeng/2021/02/03/webshell/">Webshell</a>
           </li>
         
           <li>
             <a href="/xuexinpeng/2021/02/01/redis%E9%94%AE%E7%A9%BA%E9%97%B4/">Redis键空间事件</a>
-          </li>
-        
-          <li>
-            <a href="/xuexinpeng/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">Redis的发布和订阅</a>
-          </li>
-        
-          <li>
-            <a href="/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/">vue axios封装</a>
-          </li>
-        
-          <li>
-            <a href="/xuexinpeng/2021/01/29/celery/">celery异步框架</a>
           </li>
         
       </ul>

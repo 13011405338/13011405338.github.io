@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>vue路由钩子 | Hexo</title>
+  <title>无限极分类 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="路由钩子在某些情况下，当路由跳转前或跳转后、进入、离开某一个路由前、后，需要做某些操作，就可以使用路由钩子来监听路由的变化全局路由钩子：router.beforeEach 注册一个全局前置守卫 123456789101112router.beforeEach((to, from, next) &#x3D;&gt; &amp;#123;    &#x2F;&#x2F;会在任意路由跳转前执行，next一定要记">
+  <meta name="description" content="自关联 递归无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去,一下是地区的案例 首先先建模12345class AdressInfo(models.Model):address &#x3D; models.CharField(max_length &#x3D; 200, null &#x3D; True, blank &#x3D; True, verbose_name &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue路由钩子">
-<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/index.html">
+<meta property="og:title" content="无限极分类">
+<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="路由钩子在某些情况下，当路由跳转前或跳转后、进入、离开某一个路由前、后，需要做某些操作，就可以使用路由钩子来监听路由的变化全局路由钩子：router.beforeEach 注册一个全局前置守卫 123456789101112router.beforeEach((to, from, next) &#x3D;&gt; &amp;#123;    &#x2F;&#x2F;会在任意路由跳转前执行，next一定要记">
+<meta property="og:description" content="自关联 递归无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去,一下是地区的案例 首先先建模12345class AdressInfo(models.Model):address &#x3D; models.CharField(max_length &#x3D; 200, null &#x3D; True, blank &#x3D; True, verbose_name &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-26T06:59:21.000Z">
-<meta property="article:modified_time" content="2021-01-26T09:14:15.129Z">
+<meta property="article:published_time" content="2021-02-04T06:50:21.000Z">
+<meta property="article:modified_time" content="2021-02-06T15:47:10.631Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="GIT">
 <meta name="twitter:card" content="summary">
@@ -74,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-vue路由钩子" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-无限极分类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" class="article-date">
-  <time class="dt-published" datetime="2021-01-26T06:59:21.000Z" itemprop="datePublished">2021-01-26</time>
+    <a href="/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-02-04T06:50:21.000Z" itemprop="datePublished">2021-02-04</time>
 </a>
     
   <div class="article-category">
@@ -92,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      vue路由钩子
+      无限极分类
     </h1>
   
 
@@ -100,14 +100,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="路由钩子"><a href="#路由钩子" class="headerlink" title="路由钩子"></a>路由钩子</h2><p>在某些情况下，当路由跳转前或跳转后、进入、离开某一个路由前、后，需要做某些操作，就可以使用路由钩子来监听路由的变化<br>全局路由钩子：router.beforeEach 注册一个全局前置守卫</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;会在任意路由跳转前执行，next一定要记着执行，不然路由不能跳转了</span><br><span class="line">  console.log(&#39;beforeEach&#39;)</span><br><span class="line">  console.log(to,from)</span><br><span class="line">  &#x2F;&#x2F;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">router.afterEach((to, from) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;会在任意路由跳转后执行</span><br><span class="line">  console.log(&#39;afterEach&#39;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>单个路由钩子：<br>只有beforeEnter，在进入前执行，to参数就是当前路由</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">   &#123;</span><br><span class="line">     path: &#39;&#x2F;foo&#39;,</span><br><span class="line">     component: Foo,</span><br><span class="line">     beforeEnter: (to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">       &#x2F;&#x2F; ...</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+        <h2 id="自关联-递归"><a href="#自关联-递归" class="headerlink" title="自关联 递归"></a>自关联 递归</h2><p>无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去,一下是地区的案例</p>
+<h3 id="首先先建模"><a href="#首先先建模" class="headerlink" title="首先先建模"></a>首先先建模</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class AdressInfo(models.Model):</span><br><span class="line">address &#x3D; models.CharField(max_length &#x3D; 200, null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘地址’)</span><br><span class="line">pid &#x3D; models.ForeignKey(‘self’ , null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘自关联’)</span><br><span class="line">def __str__(self):</span><br><span class="line">return self.adress</span><br></pre></td></tr></table></figure>
+<h3 id="迁移数据库"><a href="#迁移数据库" class="headerlink" title="迁移数据库"></a>迁移数据库</h3><h3 id="url路由"><a href="#url路由" class="headerlink" title="url路由"></a>url路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns &#x3D; [</span><br><span class="line">url(r&#39;^addr&#x2F;(d+)$&#39;, Address.addrAPI, name &#x3D; &#39;Addr)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def addrAPI(request,addr_id): # 接收一个参数的id，指model中的pid属性对应的字段</span><br><span class="line">    if (int(addr_id) &#x3D;&#x3D; 0): # 为0表示查询省，省的pid_id为null</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid__isnull &#x3D; True).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">    else: # 查询市或其他县</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid_id &#x3D; int(addr_id)).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">        area_list &#x3D; []</span><br><span class="line">    for a in address_data:</span><br><span class="line">        area_list.append(&#123;&#39;id&#39;:a[&#39;id&#39;], &#39;address&#39;:a[&#39;address&#39;]&#125;)</span><br><span class="line">    return JsonResponse(area_list, safe &#x3D; False)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/26/vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" data-id="ckktxl6zu0006jwah9iyncaty" data-title="vue路由钩子" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/" data-id="ckktxl72d000tjwah5mefd6fu" data-title="无限极分类" class="article-share-link">Share</a>
       
       
       
@@ -119,19 +120,19 @@
     
 <nav id="article-nav">
   
-    <a href="/xuexinpeng/2021/01/27/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/xuexinpeng/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          vue父子组件传参
+          视频直播
         
       </div>
     </a>
   
   
-    <a href="/xuexinpeng/2021/01/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/xuexinpeng/2021/02/03/webshell/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Webshell</div>
     </a>
   
 </nav>
