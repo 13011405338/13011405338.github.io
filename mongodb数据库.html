@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>3.10总结 | Hexo</title>
+  <title>MongoDB | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="eval() 原样输出字符串 将字符串强转为表现出来的类型   _参数 类内部参数 外部无法访问 增加安全性   进程&#x2F;线程什么时候用 进程 适用于cpu密集任务（一个程序就可以理解为一个进程 ）   线程 适用于io密集任务（读取网络，读取文件）">
-<meta property="og:type" content="article">
-<meta property="og:title" content="3.10总结">
-<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/2021/03/10/3.10/index.html">
+  <meta name="description" content="MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。 123456789101112131415161718192021222324252627281. 连接数据库mongo2、创建数据库use 数据库名3、查看当前数据库db4、查看所有数据库dbs5、insert() 插入数据db.workcate.insert(&amp;#123;‘n">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MongoDB">
+<meta property="og:url" content="https://xue-xinpeng.gitee.io/xuexinpeng/mongodb%E6%95%B0%E6%8D%AE%E5%BA%93.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="eval() 原样输出字符串 将字符串强转为表现出来的类型   _参数 类内部参数 外部无法访问 增加安全性   进程&#x2F;线程什么时候用 进程 适用于cpu密集任务（一个程序就可以理解为一个进程 ）   线程 适用于io密集任务（读取网络，读取文件）">
+<meta property="og:description" content="MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。 123456789101112131415161718192021222324252627281. 连接数据库mongo2、创建数据库use 数据库名3、查看当前数据库db4、查看所有数据库dbs5、insert() 插入数据db.workcate.insert(&amp;#123;‘n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-10T10:28:43.000Z">
-<meta property="article:modified_time" content="2021-03-10T13:36:02.676Z">
+<meta property="article:modified_time" content="2021-03-18T13:51:26.765Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,9 +73,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-3.10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/xuexinpeng/2021/03/10/3.10/" class="article-date">
+    <a href="/xuexinpeng/mongodb%E6%95%B0%E6%8D%AE%E5%BA%93.html" class="article-date">
   <time class="dt-published" datetime="2021-03-10T10:28:43.000Z" itemprop="datePublished">2021-03-10</time>
 </a>
     
@@ -87,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      3.10总结
+      MongoDB
     </h1>
   
 
@@ -95,32 +95,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li>eval()<ul>
-<li>原样输出字符串 将字符串强转为表现出来的类型</li>
-</ul>
-</li>
-<li>_参数<ul>
-<li>类内部参数 外部无法访问 增加安全性</li>
-</ul>
-</li>
-<li>进程/线程什么时候用<ul>
-<li>进程<ul>
-<li>适用于cpu密集任务（一个程序就可以理解为一个进程 ）</li>
-</ul>
-</li>
-<li>线程<ul>
-<li>适用于io密集任务（读取网络，读取文件）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+        <p>MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1. 连接数据库</span><br><span class="line">mongo</span><br><span class="line"></span><br><span class="line">2、创建数据库</span><br><span class="line">use 数据库名</span><br><span class="line"></span><br><span class="line">3、查看当前数据库</span><br><span class="line">db</span><br><span class="line"></span><br><span class="line">4、查看所有数据库</span><br><span class="line">dbs</span><br><span class="line"></span><br><span class="line">5、insert() 插入数据</span><br><span class="line">db.workcate.insert(&#123;‘name’:’123’&#125;)</span><br><span class="line">db.表名.insert(&#123;‘name’:’123’&#125;)</span><br><span class="line"></span><br><span class="line">6、insertMany() 插入多条数据</span><br><span class="line">db.cao.insertMany([&#123;name:”cao”&#125;,&#123;name:”yuan”&#125;,&#123;name:”caopeng”&#125;])</span><br><span class="line"></span><br><span class="line">7、查看数据</span><br><span class="line">db.表名.find(&#123;条件&#125;)</span><br><span class="line">db.表名.find(条件).preety() # 树状型展示</span><br><span class="line"></span><br><span class="line">8、查看表名字</span><br><span class="line">db.getCollectionNames()</span><br><span class="line"></span><br><span class="line">9、查看数据库名</span><br><span class="line">db.getName()</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/2021/03/10/3.10/" data-id="ckm3hmhqz00002cah4yefgsjb" data-title="3.10总结" class="article-share-link">Share</a>
+      <a data-url="https://xue-xinpeng.gitee.io/xuexinpeng/mongodb%E6%95%B0%E6%8D%AE%E5%BA%93.html" data-id="ckmexmqim0000owah98e6htt4" data-title="MongoDB" class="article-share-link">Share</a>
       
       
       
@@ -128,16 +108,6 @@
   </div>
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/xuexinpeng/2021/02/06/docker%E6%93%8D%E4%BD%9C,%E5%AE%B9%E5%99%A8,%E9%95%9C%E5%83%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">docker操作 容器,镜像,dockerfile</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
@@ -192,7 +162,7 @@
       <ul>
         
           <li>
-            <a href="/xuexinpeng/2021/03/10/3.10/">3.10总结</a>
+            <a href="/xuexinpeng/2021/03/10/%E6%80%BB%E7%BB%93/">总结</a>
           </li>
         
           <li>
