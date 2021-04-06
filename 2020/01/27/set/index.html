@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue路由拦截器, 薛超">
+    <meta name="keywords" content="set, 薛超">
     <meta name="description" content="薛超的Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>vue路由拦截器 | 薛超</title>
+    <title>set | 薛超</title>
     <link rel="icon" type="image/png" href="/xuexinpeng/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/xuexinpeng/libs/awesome/css/all.css">
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/xuexinpeng/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/xuexinpeng/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue路由拦截器</h1>
+                    <h1 class="description center-align post-title">set</h1>
                 </div>
             </div>
         </div>
@@ -467,7 +467,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-21
+                    2020-01-27
                 </div>
                 
 
@@ -488,12 +488,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理"><a href="#可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理" class="headerlink" title="可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理"></a>可以全局进行拦截器设置。拦截器在发送请求前或响应返回时做一些特殊的处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在main.js中</span><br><span class="line">import axios from ‘axios’ &#x2F;&#x2F;引入axios</span><br><span class="line">Vue.prototype.$http &#x3D; axios &#x2F;&#x2F;配置</span><br></pre></td></tr></table></figure>
-<h3 id="请求拦截器"><a href="#请求拦截器" class="headerlink" title="请求拦截器"></a>请求拦截器</h3><h3 id="当请求时自动调用"><a href="#当请求时自动调用" class="headerlink" title="当请求时自动调用"></a>当请求时自动调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.request.use(function (config) &#123;</span><br><span class="line"> let token &#x3D; window.localStorage.getItem(&quot;token&quot;);</span><br><span class="line">   if (token) &#123;</span><br><span class="line">     config.headers.token &#x3D; token;  &#x2F;&#x2F;将token放到请求头发送给服务器</span><br><span class="line">   &#125;</span><br><span class="line">   return config; &#x2F;&#x2F; 最终需要返回config</span><br><span class="line">  &#125;, function (error) &#123;</span><br><span class="line">    return Promise.reject(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+                <h2 id="set的用法"><a href="#set的用法" class="headerlink" title="set的用法"></a>set的用法</h2><ol>
+<li>在业务场景中,数据唯一性大于数据顺序的时候就可以使用set<h2 id="set的底层算法"><a href="#set的底层算法" class="headerlink" title="set的底层算法"></a>set的底层算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 &#x3D; &#123;1,2,3,3,2,1,5&#125;</span><br><span class="line">set2 &#x3D; set()</span><br><span class="line">[set2.add(i) for i in set1 if i not in set2]</span><br><span class="line">print(set2)</span><br></pre></td></tr></table></figure>
 
-<h4 id="响应拦截器-在响应时自动会做的操作-，比如状态码返回为401时，要进入login界面"><a href="#响应拦截器-在响应时自动会做的操作-，比如状态码返回为401时，要进入login界面" class="headerlink" title="响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面"></a>响应拦截器(在响应时自动会做的操作)，比如状态码返回为401时，要进入login界面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.response.use(response &#x3D;&gt; &#123;</span><br><span class="line">  return response;</span><br><span class="line">&#125;, error &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error.request.response)</span><br><span class="line">  if (error.request.status &#x3D;&#x3D; 401) &#123;</span><br><span class="line">    window.location.href &#x3D; &quot;&#x2F;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  return error</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="get"><a href="#get" class="headerlink" title="get"></a>get</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export function get(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(err &#x3D;&gt; &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="post"><a href="#post" class="headerlink" title="post"></a>post</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export function post(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.post(url, params, headers).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch((err) &#x3D;&gt; &#123;</span><br><span class="line">      &#x2F;&#x2F; debugger</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -519,7 +519,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xue-xinpeng.gitee.io/xuexinpeng/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/">https://xue-xinpeng.gitee.io/xuexinpeng/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/</a>
+                    <a href="https://xue-xinpeng.gitee.io/xuexinpeng/xuexinpeng/2020/01/27/set/">https://xue-xinpeng.gitee.io/xuexinpeng/xuexinpeng/2020/01/27/set/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -726,7 +726,7 @@
 <script src="/xuexinpeng/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Jan 21 2021 14:59:21 GMT+0800',
+    id: 'Mon Jan 27 2020 14:55:21 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -751,9 +751,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://xue-xinpeng.gitee.io/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/';
-        this.page.identifier = '/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/';
-        this.page.title = 'vue路由拦截器';
+        this.page.url = 'https://xue-xinpeng.gitee.io/xuexinpeng/2020/01/27/set/';
+        this.page.identifier = '/xuexinpeng/2020/01/27/set/';
+        this.page.title = 'set';
     };
     let disqus_shortname = '';
 
@@ -785,13 +785,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/xuexinpeng/2021/01/25/hello-world/">
+                <a href="/xuexinpeng/2021/01/21/vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/xuexinpeng/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/xuexinpeng/medias/featureimages/20.jpg" class="responsive-img" alt="vue路由拦截器">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">vue路由拦截器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -802,15 +802,27 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-21
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            薛超
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/xuexinpeng/categories/GIT/" class="post-category">
+                                    GIT
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/xuexinpeng/tags/GIT/">
+                        <span class="chip bg-color">GIT</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -819,7 +831,7 @@ gitment.render('gitment-content');
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
                 <a href="/xuexinpeng/2020/01/27/set/">
@@ -853,6 +865,7 @@ gitment.render('gitment-content');
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
