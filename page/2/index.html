@@ -371,22 +371,21 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/">
+                    <a href="/xuexinpeng/2021/01/29/celery/">
                         <div class="card-image">
                             
                             
-                            <img src="/xuexinpeng/medias/featureimages/0.jpg" class="responsive-img" alt="vue axios封装">
+                            <img src="/xuexinpeng/medias/featureimages/11.jpg" class="responsive-img" alt="celery异步框架">
                             
-                            <span class="card-title">vue axios封装</span>
+                            <span class="card-title">celery异步框架</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                新建一个http的文件夹 里面有两个文件 一个api.js  一个index.jsindex.js文件 用于写axios的封装要先定义新的axios
-1const axios &#x3D; require(&#39;axios&#39;)
-
+                                这是使用celery异步发送短信的方法安装celery以及redis12pip install celery&#x3D;&#x3D;3.1.2pip install redis&#x3D;&#x3D;2.1.6
+在setting中配置cel
                             
                         </div>
                         <div class="publish-info">
@@ -408,21 +407,22 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/xuexinpeng/2021/01/29/celery/">
+                    <a href="/xuexinpeng/2021/01/29/axios%E5%B0%81%E8%A3%85/">
                         <div class="card-image">
                             
                             
-                            <img src="/xuexinpeng/medias/featureimages/11.jpg" class="responsive-img" alt="celery异步框架">
+                            <img src="/xuexinpeng/medias/featureimages/0.jpg" class="responsive-img" alt="vue axios封装">
                             
-                            <span class="card-title">celery异步框架</span>
+                            <span class="card-title">vue axios封装</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                这是使用celery异步发送短信的方法安装celery以及redis12pip install celery&#x3D;&#x3D;3.1.2pip install redis&#x3D;&#x3D;2.1.6
-在setting中配置cel
+                                新建一个http的文件夹 里面有两个文件 一个api.js  一个index.jsindex.js文件 用于写axios的封装要先定义新的axios
+1const axios &#x3D; require(&#39;axios&#39;)
+
                             
                         </div>
                         <div class="publish-info">
@@ -708,48 +708,74 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/xuexinpeng/2020/01/27/set/">
+                    <a href="/xuexinpeng/2020/04/27/SnowFlake/">
                         <div class="card-image">
                             
                             
-                            <img src="/xuexinpeng/medias/featureimages/2.jpg" class="responsive-img" alt="set">
+                            <img src="/xuexinpeng/medias/featureimages/22.jpg" class="responsive-img" alt="SnowFlake(雪花算法)">
                             
-                            <span class="card-title">set</span>
+                            <span class="card-title">SnowFlake(雪花算法)</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                set的用法
-在业务场景中,数据唯一性大于数据顺序的时候就可以使用setset的底层算法1234set1 &#x3D; &#123;1,2,3,3,2,1,5&#125;set2 &#x3D; set()[set2.add(i) for i
+                                一般情况下,订单编号都是唯一的,普通人只知道用uuid生成订单号,但是用uuid生成的编号做主键,会十分影响查询效率,而且丝毫没有一点顺序,而mysql主键的特点就是唯一 有序,所以uuid并不适合作为主键,但是雪花算法生成的编号却正好满足
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/xuexinpeng/categories/GIT/" class="post-category">
-                                    GIT
-                                </a>
-                                
+                                <i class="fas fa-user fa-fw"></i>
+                                薛超
                                 
                             </span>
                         </div>
                     </div>
 
                     
-                    <div class="card-action article-tags">
-                        
-                        <a href="/xuexinpeng/tags/GIT/">
-                            <span class="chip bg-color">GIT</span>
-                        </a>
-                        
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/xuexinpeng/2020/04/10/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/xuexinpeng/medias/featureimages/18.jpg" class="responsive-img" alt="git分支操作">
+                            
+                            <span class="card-title">git分支操作</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                在git仓库创建分支
+1. 命令1. 查看当前所在分支1git branch -a  # *号代表所在分支
+2. 切换分支1git checkout 分支名
+3. 合并分支1git merge 分支名
+2. 如何合并分支例 : 将dev分支
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                薛超
+                                
+                            </span>
+                        </div>
                     </div>
+
                     
                 </div>
             </div>
@@ -771,11 +797,12 @@
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">2 / 2</div>
+            <div class="center-align b-text-gray">2 / 3</div>
         </div>
         <div class="col s6 m4 l4">
             
-            <a class="right btn-floating btn-large disabled">
+            <a href="/xuexinpeng/page/3/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
                 <i class="fas fa-angle-right"></i>
             </a>
             
