@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SnowFlake(雪花算法), 薛超">
+    <meta name="keywords" content="服务器登陆改为秘钥登陆, 薛超">
     <meta name="description" content="薛超的Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>SnowFlake(雪花算法) | 薛超</title>
+    <title>服务器登陆改为秘钥登陆 | 薛超</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SnowFlake(雪花算法)</h1>
+                    <h1 class="description center-align post-title">服务器登陆改为秘钥登陆</h1>
                 </div>
             </div>
         </div>
@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-29
+                    2021-03-30
                 </div>
                 
 
@@ -475,14 +475,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一般情况下,订单编号都是唯一的,普通人只知道用uuid生成订单号,但是用uuid生成的编号做主键,会十分影响查询效率,而且丝毫没有一点顺序,而mysql主键的特点就是唯一 有序,所以uuid并不适合作为主键,但是雪花算法生成的编号却正好满足了订单号和mysql的所有需求,而且雪花算法还可以分表存储,当业务量巨大的时,雪花算法也可以轻松满足<br>snowflake会生成一个64位的二进制整数,然后转换成十进制的数,64位二进制数由如下部分组成:<br><img src="1.png"><br>1位标识符：始终是0<br>41位时间戳：41位时间戳不是存储当前时间的时间戳，而是存储时间截的差值（当前时间截 - 开始时间截 )得到的值，这里的的开始时间截，一般是我们的id生成器开始使用的时间，由我们程序来指定的<br>10位机器标识码：可以部署在1024个节点，如果机器分机房（IDC）部署，这10位可以由 5位机房ID + 5位机器ID 组成<br>12位序列：毫秒内的计数，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号</p>
-<h2 id="1-安装库"><a href="#1-安装库" class="headerlink" title="1. 安装库"></a>1. 安装库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pysnowflake</span><br></pre></td></tr></table></figure>
-<h2 id="2-启动服务"><a href="#2-启动服务" class="headerlink" title="2. 启动服务"></a>2. 启动服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snowflake_start_server --worker&#x3D;1</span><br></pre></td></tr></table></figure>
-<h2 id="3-生成唯一id"><a href="#3-生成唯一id" class="headerlink" title="3. 生成唯一id"></a>3. 生成唯一id</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import snowflake.client</span><br><span class="line"></span><br><span class="line">print(snowflake.client.get_guid())</span><br></pre></td></tr></table></figure>
-<h2 id="4-启动多个服务"><a href="#4-启动多个服务" class="headerlink" title="4. 启动多个服务"></a>4. 启动多个服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snowflake_start_server --port&#x3D;8920 --worker&#x3D;2</span><br></pre></td></tr></table></figure>
-<h2 id="5-选择服务生成唯一id"><a href="#5-选择服务生成唯一id" class="headerlink" title="5. 选择服务生成唯一id"></a>5. 选择服务生成唯一id</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import snowflake.client</span><br><span class="line"></span><br><span class="line">host &#x3D; &#39;127.0.0.1&#39;</span><br><span class="line">port &#x3D; 8920  # 启动服务的端口号,不加默认第一个服务 </span><br><span class="line">snowflake.client.setup(host, port)</span><br><span class="line">orderid &#x3D; snowflake.client.get_guid()</span><br></pre></td></tr></table></figure>
-<h2 id="6-根据唯一id反推使用的哪个服务"><a href="#6-根据唯一id反推使用的哪个服务" class="headerlink" title="6. 根据唯一id反推使用的哪个服务"></a>6. 根据唯一id反推使用的哪个服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">orderid &#x3D; snowflake.client.get_guid()</span><br><span class="line">print(bin(orderid))</span><br><span class="line">ft &#x3D; bin(orderid)[-17:-12]</span><br><span class="line">print(int(ft, 2))</span><br><span class="line">1  # 结果</span><br></pre></td></tr></table></figure>
-<p>转换的结果就是使用的那个服务生成的唯一id了,这样就可以使用多个表存储唯一id,也就具备了相当强的业务属性</p>
+                <p>  如果你购买了阿里云,华为云,或者腾讯云,登陆的方式默认都是密码登陆,这样你的服务器就会暴露在外面,在你不知道的情况下,就会被人暴力破解<br>  基于秘钥的安全验证就是给自己创建一对秘钥(公钥和私钥), 公钥放到服务器存储起来, 当你登陆的时候获取到你的私钥, 会想服务器发送请求,服务器就开始从根目录开始找公钥, 然后将私钥跟公钥比较, 一致就可以登陆了<br>  本次我们服务器就将改为账号+秘钥登陆,提高安全性, 这里以centos7.3为例子</p>
+<h2 id="1-先登陆到你的服务器-生成秘钥"><a href="#1-先登陆到你的服务器-生成秘钥" class="headerlink" title="1. 先登陆到你的服务器, 生成秘钥"></a>1. 先登陆到你的服务器, 生成秘钥</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>返回信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):  &#x2F;&#x2F; 直接回车</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_rsa already exists.</span><br><span class="line">Overwrite (y&#x2F;n)? y &#x2F;&#x2F; 我的本来就有秘钥,这是重新设置,第一次是没有这个的</span><br><span class="line">Enter passphrase (empty for no passphrase): &#x2F;&#x2F; 密码,建议设置一个密码</span><br><span class="line">Enter same passphrase again: &#x2F;&#x2F; 重复密码</span><br></pre></td></tr></table></figure>
+<h2 id="2-之后将-ssh-id-rsa-pub-复制到-ssh-authorized-keys-并且赋予权限"><a href="#2-之后将-ssh-id-rsa-pub-复制到-ssh-authorized-keys-并且赋予权限" class="headerlink" title="2. 之后将~/.ssh/id_rsa.pub 复制到 ~/.ssh/authorized_keys,并且赋予权限"></a>2. 之后将~/.ssh/id_rsa.pub 复制到 ~/.ssh/authorized_keys,并且赋予权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub &gt;&gt; ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line"></span><br><span class="line">chmod 600 ~&#x2F;.ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
+<h2 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3. 修改配置文件"></a>3. 修改配置文件</h2><p>随后修改/etc/ssh/sshd_config 文件，将PubkeyAuthentication 后面的值都改成yes ，保存。</p>
+<h2 id="4-可选-关闭密码登陆"><a href="#4-可选-关闭密码登陆" class="headerlink" title="4. 可选(关闭密码登陆)"></a>4. 可选(关闭密码登陆)</h2><p>修改/etc/ssh/sshd_config 文件将PasswordAuthentication yes 修改成 PasswordAuthentication no(最后一行)<br><img src="1.png"></p>
+<h2 id="5-重启ssh服务"><a href="#5-重启ssh服务" class="headerlink" title="5. 重启ssh服务"></a>5. 重启ssh服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service sshd restart</span><br></pre></td></tr></table></figure>
+<h2 id="6-测试秘钥登陆"><a href="#6-测试秘钥登陆" class="headerlink" title="6. 测试秘钥登陆"></a>6. 测试秘钥登陆</h2><p>  将服务器目录中的秘钥~/.ssh/id_rsa下载到本地<br>  windows为例, 我用的是xshell 7<br>  <img src="2.png"><br>  浏览—-选择用户秘钥<br>  <img src="3.png"><br>  将本地的秘钥导入<br>  这个就是生成秘钥时输入的密码<br>  <img src="4.png"><br>  之后就进入到服务器了<br>这样安全性确实大大提升了，但是也不是滴水不漏，因为你本地电脑也是有可能被入侵的</p>
 
                 
             </div>
@@ -509,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://x3cp.cn/2021/03/29/SnowFlake/">https://x3cp.cn/2021/03/29/SnowFlake/</a>
+                    <a href="https://x3cp.cn/2021/03/30/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E9%99%86%E6%94%B9%E4%B8%BA%E7%A7%98%E9%92%A5%E7%99%BB%E9%99%86/">https://x3cp.cn/2021/03/30/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E9%99%86%E6%94%B9%E4%B8%BA%E7%A7%98%E9%92%A5%E7%99%BB%E9%99%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -712,7 +713,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Mar 29 2021 18:28:43 GMT+0800',
+    id: 'Tue Mar 30 2021 08:28:43 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -737,9 +738,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://x3cp.cn/2021/03/29/SnowFlake/';
-        this.page.identifier = '/2021/03/29/SnowFlake/';
-        this.page.title = 'SnowFlake(雪花算法)';
+        this.page.url = 'https://x3cp.cn/2021/03/30/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E9%99%86%E6%94%B9%E4%B8%BA%E7%A7%98%E9%92%A5%E7%99%BB%E9%99%86/';
+        this.page.identifier = '/2021/03/30/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E9%99%86%E6%94%B9%E4%B8%BA%E7%A7%98%E9%92%A5%E7%99%BB%E9%99%86/';
+        this.page.title = '服务器登陆改为秘钥登陆';
     };
     let disqus_shortname = '';
 
@@ -767,9 +768,10 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/30/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E9%99%86%E6%94%B9%E4%B8%BA%E7%A7%98%E9%92%A5%E7%99%BB%E9%99%86/">
                     <div class="card-image">
@@ -787,9 +789,9 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -798,6 +800,7 @@ gitment.render('gitment-content');
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -808,13 +811,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/29/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/">
+                <a href="/2021/03/29/SnowFlake/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="git分支操作">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="SnowFlake(雪花算法)">
                         
-                        <span class="card-title">git分支操作</span>
+                        <span class="card-title">SnowFlake(雪花算法)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
