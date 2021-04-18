@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue axios封装, 薛鑫鹏">
+    <meta name="keywords" content="位运算实现权限管理, 薛鑫鹏">
     <meta name="description" content="薛鑫鹏的Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>vue axios封装 | 薛鑫鹏</title>
+    <title>位运算实现权限管理 | 薛鑫鹏</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue axios封装</h1>
+                    <h1 class="description center-align post-title">位运算实现权限管理</h1>
                 </div>
             </div>
         </div>
@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-29
+                    2021-03-16
                 </div>
                 
 
@@ -475,11 +475,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js"><a href="#新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js" class="headerlink" title="新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js"></a>新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js</h3><h3 id="index-js文件-用于写axios的封装"><a href="#index-js文件-用于写axios的封装" class="headerlink" title="index.js文件 用于写axios的封装"></a>index.js文件 用于写axios的封装</h3><p>要先定义新的axios</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const axios &#x3D; require(&#39;axios&#39;)</span><br></pre></td></tr></table></figure>
-<h3 id="get的封装-params是携带的参数"><a href="#get的封装-params是携带的参数" class="headerlink" title="get的封装  params是携带的参数"></a>get的封装  params是携带的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export function get(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(err &#x3D;&gt; &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="post的封装"><a href="#post的封装" class="headerlink" title="post的封装"></a>post的封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export function post(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.post(url, params, headers).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch((err) &#x3D;&gt; &#123;</span><br><span class="line">      &#x2F;&#x2F; debugger</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="api-js-用于写接口-要先引入-index-js"><a href="#api-js-用于写接口-要先引入-index-js" class="headerlink" title="api.js 用于写接口  要先引入 index.js"></a>api.js 用于写接口  要先引入 index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;get, post, put, del&#125; from &#39;.&#x2F;index&#39;</span><br><span class="line"></span><br><span class="line">export const signUp &#x3D; parameter &#x3D;&gt; &#123;</span><br><span class="line">  return post(</span><br><span class="line">    &#39;signup&#x2F;&#39;,</span><br><span class="line">    parameter,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h2 id="3-用户权限"><a href="#3-用户权限" class="headerlink" title="3. 用户权限"></a>3. 用户权限</h2><p>需求: 用位运算实现用户权限,用户id为单数可以访问用户管理,双数访问用户详情<br>可以修改用户权限</p>
+<h3 id="1-代码-中间件实现"><a href="#1-代码-中间件实现" class="headerlink" title="1. 代码: 中间件实现"></a>1. 代码: 中间件实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class MyMiddlewareMixin(MiddlewareMixin):</span><br><span class="line">    def process_request(self, request):</span><br><span class="line">        if id:</span><br><span class="line">            # user &#x3D; User_Identity.objects.filter(user_id&#x3D;uid).first()</span><br><span class="line">            request.level &#x3D; int(id) &amp; 1</span><br></pre></td></tr></table></figure>
+<h3 id="2-setting"><a href="#2-setting" class="headerlink" title="2. setting:"></a>2. setting:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;userapp.views.MyMiddlewareMixin&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="3-修改用户权限"><a href="#3-修改用户权限" class="headerlink" title="3. 修改用户权限"></a>3. 修改用户权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class QX(APIView):</span><br><span class="line"></span><br><span class="line">    def get(self, request):</span><br><span class="line">        return Response(qx &#x3D;&#x3D; request.level)</span><br><span class="line"></span><br><span class="line">    def put(self, request):</span><br><span class="line">        global qx</span><br><span class="line">        qx &#x3D; int(not qx)</span><br><span class="line">        print(qx)</span><br><span class="line">        return Response(&#123;&#39;msg&#39;: &#39;已修改&#39;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-vue路由守卫"><a href="#4-vue路由守卫" class="headerlink" title="4. vue路由守卫:"></a>4. vue路由守卫:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">path:&#39;&#x2F;add&#39;,</span><br><span class="line">name:&#39;detail&#39;,</span><br><span class="line">component:detail,</span><br><span class="line">beforeEnter: (to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">var id &#x3D; localStorage.getItem(&#39;id&#39;)</span><br><span class="line">axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;app2&#x2F;qx&#x2F;?id&#x3D;&#39; + id)</span><br><span class="line">    .then(resp &#x3D;&gt; &#123;</span><br><span class="line">    var rs &#x3D; resp.data</span><br><span class="line">    if (!rs) &#123;</span><br><span class="line">        &#x2F;&#x2F; 请求接口结果判断通过</span><br><span class="line">        next()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        message.info(&#39;没有权限&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -505,7 +505,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/">https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/</a>
+                    <a href="https://x3cp.cn/2021/03/16/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">https://x3cp.cn/2021/03/16/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -708,7 +708,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Jan 29 2021 18:28:43 GMT+0800',
+    id: 'Tue Mar 16 2021 00:00:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -733,9 +733,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/';
-        this.page.identifier = '/2021/01/29/axios%E5%B0%81%E8%A3%85/';
-        this.page.title = 'vue axios封装';
+        this.page.url = 'https://x3cp.cn/2021/03/16/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/';
+        this.page.identifier = '/2021/03/16/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/';
+        this.page.title = '位运算实现权限管理';
     };
     let disqus_shortname = '';
 
@@ -767,13 +767,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">
+                <a href="/2021/03/17/%E8%87%AA%E4%B8%BB%E5%AE%9E%E7%8E%B0celery/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Redis的发布和订阅">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="自主实现celery,解决celery过重问题">
                         
-                        <span class="card-title">Redis的发布和订阅</span>
+                        <span class="card-title">自主实现celery,解决celery过重问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -784,27 +784,15 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/GIT/" class="post-category">
-                                    GIT
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            薛鑫鹏
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/GIT/">
-                        <span class="chip bg-color">GIT</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -816,13 +804,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/29/celery/">
+                <a href="/2021/03/15/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AE%A1%E6%A0%B8%E6%B5%81%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="celery异步框架">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="工作流审核流程">
                         
-                        <span class="card-title">celery异步框架</span>
+                        <span class="card-title">工作流审核流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -833,7 +821,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
                             </span>
                         <span class="publish-author">
                             

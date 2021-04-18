@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="无限极分类, 薛超">
-    <meta name="description" content="薛超的Blog">
+    <meta name="keywords" content="自主实现celery,解决celery过重问题, 薛鑫鹏">
+    <meta name="description" content="薛鑫鹏的Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>无限极分类 | 薛超</title>
+    <title>自主实现celery,解决celery过重问题 | 薛鑫鹏</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -54,7 +54,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">薛超</span>
+                    <span class="logo-span">薛鑫鹏</span>
                 </a>
             </div>
             
@@ -153,10 +153,10 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">薛超</div>
+        <div class="logo-name">薛鑫鹏</div>
         <div class="logo-desc">
             
-            薛超的Blog
+            薛鑫鹏的Blog
             
         </div>
     </div>
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">无限极分类</h1>
+                    <h1 class="description center-align post-title">自主实现celery,解决celery过重问题</h1>
                 </div>
             </div>
         </div>
@@ -440,25 +440,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/GIT/">
-                                <span class="chip bg-color">GIT</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/GIT/" class="post-category">
-                                GIT
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -467,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-04
+                    2021-03-17
                 </div>
                 
 
@@ -488,11 +475,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="自关联-递归"><a href="#自关联-递归" class="headerlink" title="自关联 递归"></a>自关联 递归</h2><p>无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去,一下是地区的案例</p>
-<h3 id="首先先建模"><a href="#首先先建模" class="headerlink" title="首先先建模"></a>首先先建模</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class AdressInfo(models.Model):</span><br><span class="line">address &#x3D; models.CharField(max_length &#x3D; 200, null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘地址’)</span><br><span class="line">pid &#x3D; models.ForeignKey(‘self’ , null &#x3D; True, blank &#x3D; True, verbose_name &#x3D; ‘自关联’)</span><br><span class="line">def __str__(self):</span><br><span class="line">return self.adress</span><br></pre></td></tr></table></figure>
-<h3 id="迁移数据库"><a href="#迁移数据库" class="headerlink" title="迁移数据库"></a>迁移数据库</h3><h3 id="url路由"><a href="#url路由" class="headerlink" title="url路由"></a>url路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns &#x3D; [</span><br><span class="line">url(r&#39;^addr&#x2F;(d+)$&#39;, Address.addrAPI, name &#x3D; &#39;Addr)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def addrAPI(request,addr_id): # 接收一个参数的id，指model中的pid属性对应的字段</span><br><span class="line">    if (int(addr_id) &#x3D;&#x3D; 0): # 为0表示查询省，省的pid_id为null</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid__isnull &#x3D; True).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">    else: # 查询市或其他县</span><br><span class="line">        address_data &#x3D; AddressInfo.objects.filter(pid_id &#x3D; int(addr_id)).values(&#39;id&#39;,&#39;address&#39;)</span><br><span class="line">        area_list &#x3D; []</span><br><span class="line">    for a in address_data:</span><br><span class="line">        area_list.append(&#123;&#39;id&#39;:a[&#39;id&#39;], &#39;address&#39;:a[&#39;address&#39;]&#125;)</span><br><span class="line">    return JsonResponse(area_list, safe &#x3D; False)</span><br></pre></td></tr></table></figure>
-
+                <p>思路: 分两部分<br>第一部分: 将要修改的用户id存入到redis list中按照队列先进先出的思路<br>第二部分: 然后用协程实现异步修改</p>
+<h3 id="1-代码-封装redis-实现队列效果"><a href="#1-代码-封装redis-实现队列效果" class="headerlink" title="1. 代码: 封装redis 实现队列效果"></a>1. 代码: 封装redis 实现队列效果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class MyRedisQueue:</span><br><span class="line"></span><br><span class="line">    def __init__(self, key, **redis_kwargs):</span><br><span class="line">        self.__db &#x3D; redis.Redis(**redis_kwargs)</span><br><span class="line">        self.key &#x3D; key</span><br><span class="line"></span><br><span class="line">    def push(self, key, value):</span><br><span class="line">        self.__db.lpush(key, value)</span><br><span class="line"></span><br><span class="line">    def lrange(self, key):</span><br><span class="line">        return self.__db.lrange(key, 0, -1)</span><br><span class="line"></span><br><span class="line">    def llen(self, key):</span><br><span class="line">        return self.__db.llen(key)</span><br><span class="line"></span><br><span class="line">    def pop(self):</span><br><span class="line">        return self.__db.rpop(self.key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">async def dojob():</span><br><span class="line">    r &#x3D; MyRedisQueue(&#39;queue&#39;)</span><br><span class="line">    ccc &#x3D; &#39;jg&#39;</span><br><span class="line">    while 1:</span><br><span class="line">        dea &#x3D; r.pop()</span><br><span class="line">        if not dea:</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            a &#x3D; eval(dea)</span><br><span class="line">            print(a)</span><br><span class="line">            if User.objects.filter(username&#x3D;a[1]):</span><br><span class="line">                r.hset(ccc, a[0], 400)</span><br><span class="line">            else:</span><br><span class="line">                User.objects.filter(id&#x3D;a[0]).update(username&#x3D;a[1])</span><br><span class="line">                r.hset(ccc, a[0], 200)</span><br></pre></td></tr></table></figure>
+<h3 id="2-代码-实现异步消费"><a href="#2-代码-实现异步消费" class="headerlink" title="2. 代码: 实现异步消费"></a>2. 代码: 实现异步消费</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">r &#x3D; MyRedisQueue(&#39;queue&#39;, decode_responses&#x3D;True)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Update(APIView):</span><br><span class="line"></span><br><span class="line">    def get(self, request):</span><br><span class="line">        id &#x3D; request.query_params.get(&#39;id&#39;)</span><br><span class="line">        # print(r.lrange(key))</span><br><span class="line">        # list &#x3D; r.lrange()</span><br><span class="line">        loop &#x3D; asyncio.new_event_loop()</span><br><span class="line">        asyncio.set_event_loop(loop)</span><br><span class="line">        res &#x3D; loop.run_until_complete(dojob())</span><br><span class="line">        loop.close()</span><br><span class="line"></span><br><span class="line">        a &#x3D; r.hget(&#39;jg&#39;, id)</span><br><span class="line">        print(a)</span><br><span class="line">        if a &#x3D;&#x3D; &#39;200&#39;:</span><br><span class="line">            return Response(&#123;&quot;msg&quot;: &#39;修改成功&#39;&#125;)</span><br><span class="line">        else:</span><br><span class="line">            return Response(&#123;&#39;msg&#39;: &#39;用户名重复&#39;&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class UpdateUser(APIView):</span><br><span class="line"></span><br><span class="line">    def post(self, request):</span><br><span class="line">        id &#x3D; request.query_params.get(&#39;id&#39;)</span><br><span class="line">        vip &#x3D; request.data.get(&#39;vip&#39;)</span><br><span class="line">        new_username &#x3D; request.data.get(&#39;new_username&#39;)</span><br><span class="line">        r.push(&#39;queue&#39;,f&#39;&#123;id, new_username, vip&#125;&#39;)</span><br><span class="line"></span><br><span class="line">        return Response(&#123;&#39;msg&#39;: &#39;正在审核&#39;&#125;)</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -508,7 +493,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">薛超</a>
+                    <a href="/about" rel="external nofollow noreferrer">薛鑫鹏</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -518,7 +503,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://x3cp.cn/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/">https://x3cp.cn/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/</a>
+                    <a href="https://x3cp.cn/2021/03/17/%E8%87%AA%E4%B8%BB%E5%AE%9E%E7%8E%B0celery/">https://x3cp.cn/2021/03/17/%E8%87%AA%E4%B8%BB%E5%AE%9E%E7%8E%B0celery/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -531,7 +516,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">薛超</a>
+                    <a href="/about" target="_blank">薛鑫鹏</a>
                     !
                 </span>
             </div>
@@ -555,11 +540,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/GIT/">
-                                    <span class="chip bg-color">GIT</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -725,7 +706,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Feb 04 2021 14:50:21 GMT+0800',
+    id: 'Wed Mar 17 2021 00:00:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -750,9 +731,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://x3cp.cn/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/';
-        this.page.identifier = '/2021/02/04/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/';
-        this.page.title = '无限极分类';
+        this.page.url = 'https://x3cp.cn/2021/03/17/%E8%87%AA%E4%B8%BB%E5%AE%9E%E7%8E%B0celery/';
+        this.page.identifier = '/2021/03/17/%E8%87%AA%E4%B8%BB%E5%AE%9E%E7%8E%B0celery/';
+        this.page.title = '自主实现celery,解决celery过重问题';
     };
     let disqus_shortname = '';
 
@@ -784,13 +765,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/05/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/">
+                <a href="/2021/03/18/websocket%E5%AE%9E%E6%97%B6%E8%81%8A%E5%A4%A9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="视频直播">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="实训1总结">
                         
-                        <span class="card-title">视频直播</span>
+                        <span class="card-title">实训1总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -801,27 +782,15 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/GIT/" class="post-category">
-                                    GIT
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            薛鑫鹏
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/GIT/">
-                        <span class="chip bg-color">GIT</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -833,13 +802,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/03/webshell/">
+                <a href="/2021/03/16/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Webshell">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="位运算实现权限管理">
                         
-                        <span class="card-title">Webshell</span>
+                        <span class="card-title">位运算实现权限管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -850,27 +819,15 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/GIT/" class="post-category">
-                                    GIT
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            薛鑫鹏
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/GIT/">
-                        <span class="chip bg-color">GIT</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1065,7 +1022,7 @@ gitment.render('gitment-content');
                 <span id="year">2019-2021</span>
             
             <span id="year">2019</span>
-            <a href="/about" target="_blank">薛超</a>
+            <a href="/about" target="_blank">薛鑫鹏</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>

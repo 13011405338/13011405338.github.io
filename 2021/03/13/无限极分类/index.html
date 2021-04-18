@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue axios封装, 薛鑫鹏">
+    <meta name="keywords" content="无限极分类, 薛鑫鹏">
     <meta name="description" content="薛鑫鹏的Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>vue axios封装 | 薛鑫鹏</title>
+    <title>无限极分类 | 薛鑫鹏</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue axios封装</h1>
+                    <h1 class="description center-align post-title">无限极分类</h1>
                 </div>
             </div>
         </div>
@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-29
+                    2021-03-13
                 </div>
                 
 
@@ -475,11 +475,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js"><a href="#新建一个http的文件夹-里面有两个文件-一个api-js-一个index-js" class="headerlink" title="新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js"></a>新建一个http的文件夹 里面有两个文件 一个api.js  一个index.js</h3><h3 id="index-js文件-用于写axios的封装"><a href="#index-js文件-用于写axios的封装" class="headerlink" title="index.js文件 用于写axios的封装"></a>index.js文件 用于写axios的封装</h3><p>要先定义新的axios</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const axios &#x3D; require(&#39;axios&#39;)</span><br></pre></td></tr></table></figure>
-<h3 id="get的封装-params是携带的参数"><a href="#get的封装-params是携带的参数" class="headerlink" title="get的封装  params是携带的参数"></a>get的封装  params是携带的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export function get(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.get(url, &#123;params, headers&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch(err &#x3D;&gt; &#123;</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="post的封装"><a href="#post的封装" class="headerlink" title="post的封装"></a>post的封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export function post(url, params, headers) &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    axios.post(url, params, headers).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      resolve(res)</span><br><span class="line">    &#125;).catch((err) &#x3D;&gt; &#123;</span><br><span class="line">      &#x2F;&#x2F; debugger</span><br><span class="line">      reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="api-js-用于写接口-要先引入-index-js"><a href="#api-js-用于写接口-要先引入-index-js" class="headerlink" title="api.js 用于写接口  要先引入 index.js"></a>api.js 用于写接口  要先引入 index.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;get, post, put, del&#125; from &#39;.&#x2F;index&#39;</span><br><span class="line"></span><br><span class="line">export const signUp &#x3D; parameter &#x3D;&gt; &#123;</span><br><span class="line">  return post(</span><br><span class="line">    &#39;signup&#x2F;&#39;,</span><br><span class="line">    parameter,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h3 id="自关联-递归"><a href="#自关联-递归" class="headerlink" title="自关联 递归"></a>自关联 递归</h3><p>无限极自关联递归就是用自己关联自己的方法 无限极的一直关联下去</p>
+<h3 id="1-model"><a href="#1-model" class="headerlink" title="1.model:"></a>1.model:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class WorkOrder(models.Model):</span><br><span class="line">    name &#x3D; models.CharField(max_length&#x3D;200)</span><br><span class="line">    pid &#x3D; models.ForeignKey(&#39;self&#39;, models.SET_NULL, null&#x3D;True, blank&#x3D;True, verbose_name&#x3D;&#39;自关联&#39;)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name</span><br></pre></td></tr></table></figure>
+<h3 id="2-树"><a href="#2-树" class="headerlink" title="2.树:"></a>2.树:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def xTree(datas):</span><br><span class="line">    lists &#x3D; []  # 定义空列表</span><br><span class="line">    tree &#x3D; &#123;&#125;  # 定义空字典</span><br><span class="line">    for i in datas:</span><br><span class="line">        item &#x3D; i</span><br><span class="line">        tree[item[&#39;id&#39;]] &#x3D; item</span><br><span class="line"></span><br><span class="line">    for i in datas:</span><br><span class="line">        obj &#x3D; i</span><br><span class="line">        if not obj[&#39;pid&#39;]:</span><br><span class="line">            root &#x3D; tree[obj[&#39;id&#39;]]</span><br><span class="line">            lists.append(root)</span><br><span class="line">        else:</span><br><span class="line">            parent_id &#x3D; obj[&#39;pid&#39;]</span><br><span class="line">            if &#39;children&#39; not in tree[parent_id]:</span><br><span class="line">                tree[parent_id][&#39;children&#39;] &#x3D; []</span><br><span class="line">            tree[parent_id][&#39;children&#39;].append(tree[obj[&#39;id&#39;]])</span><br><span class="line">    return lists</span><br></pre></td></tr></table></figure>
+<h3 id="3-查询代码"><a href="#3-查询代码" class="headerlink" title="3.查询代码:"></a>3.查询代码:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def get(self, request):</span><br><span class="line">    cai &#x3D; WorkOrder.objects.all()</span><br><span class="line">    ser &#x3D; WorkOrderSerializer(cai, many&#x3D;True)</span><br><span class="line">    data &#x3D; xTree(ser.data)</span><br><span class="line">    return Response(data)</span><br></pre></td></tr></table></figure>
+<h3 id="4-vue用父子组件传参实现渲染"><a href="#4-vue用父子组件传参实现渲染" class="headerlink" title="4.vue用父子组件传参实现渲染:"></a>4.vue用父子组件传参实现渲染:</h3><p>子页面负责循环:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;a :href&#x3D;&quot;&#39;&#x2F;cate&#x2F;?id&#x3D;&#39;+data.id&quot;&gt;&#123;&#123;data.name&#125;&#125;&lt;&#x2F;a&gt;</span><br><span class="line">      &lt;ul v-if&#x3D;&quot;data.children &amp;&amp; data.children.length &gt; 0&quot;&gt;</span><br><span class="line">        &lt;antwork v-for&#x3D;&quot;child in data.children&quot; :key&#x3D;&quot;child.id&quot; :data&#x3D;&#39;child&#39; &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name:&quot;antwork&quot;,</span><br><span class="line">  props:[&#39;data&#39;],</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">ul&#123;</span><br><span class="line">  padding-left: 20px;</span><br><span class="line">  list-style: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-父页面负责渲染"><a href="#5-父页面负责渲染" class="headerlink" title="5.父页面负责渲染:"></a>5.父页面负责渲染:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;antwork :data&#x3D;&quot;data&quot; &#x2F;&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;select v-model&#x3D;&quot;pid&quot;&gt;</span><br><span class="line">      &lt;option v-model&#x3D;&quot;pid&quot; :value&#x3D;&quot;0&quot;&gt;主&lt;&#x2F;option&gt;</span><br><span class="line">      &lt;option v-for&#x3D;&quot;i in nr&quot; :value&#x3D;&quot;i.id&quot; :key&#x3D;&quot;i.id&quot;&gt;&#123;&#123;i.name&#125;&#125;&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import axios from &#39;axios&#39;</span><br><span class="line">import antwork from &quot;.&#x2F;antwork&quot;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      data:&#123;&#125;,</span><br><span class="line">      nr:[],</span><br><span class="line">      pid:&#39;&#39;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components:&#123;</span><br><span class="line">    antwork,</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.get_data()</span><br><span class="line">    axios(&#123;</span><br><span class="line">      url:&quot;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;app2&#x2F;work&#x2F;&quot;</span><br><span class="line">    &#125;).then(res &#x3D;&gt;&#123;</span><br><span class="line">      this.nr &#x3D; res.data</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    get_data:function()&#123;</span><br><span class="line">      axios.get(&quot;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;app2&#x2F;workorder&#x2F;&quot;).then(res&#x3D;&gt;&#123;</span><br><span class="line">        console.log(res.data);</span><br><span class="line">        var mytree &#x3D; &#123;&quot;id&quot;:0,name:&quot;&quot;&#125;;</span><br><span class="line">        mytree[&#39;children&#39;] &#x3D; res.data;</span><br><span class="line">        this.data &#x3D; mytree</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
                 
             </div>
             <hr/>
@@ -505,7 +509,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/">https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/</a>
+                    <a href="https://x3cp.cn/2021/03/13/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/">https://x3cp.cn/2021/03/13/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -708,7 +712,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Jan 29 2021 18:28:43 GMT+0800',
+    id: 'Sat Mar 13 2021 00:00:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -733,9 +737,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://x3cp.cn/2021/01/29/axios%E5%B0%81%E8%A3%85/';
-        this.page.identifier = '/2021/01/29/axios%E5%B0%81%E8%A3%85/';
-        this.page.title = 'vue axios封装';
+        this.page.url = 'https://x3cp.cn/2021/03/13/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/';
+        this.page.identifier = '/2021/03/13/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/';
+        this.page.title = '无限极分类';
     };
     let disqus_shortname = '';
 
@@ -767,13 +771,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/01/%E5%8F%91%E5%B8%83%E8%80%85%E8%AE%A2%E9%98%85%E8%80%85/">
+                <a href="/2021/03/14/%E9%92%89%E9%92%89%E4%B8%89%E6%96%B9%E7%99%BB%E9%99%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Redis的发布和订阅">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="钉钉三方登陆">
                         
-                        <span class="card-title">Redis的发布和订阅</span>
+                        <span class="card-title">钉钉三方登陆</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -784,27 +788,15 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/GIT/" class="post-category">
-                                    GIT
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            薛鑫鹏
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/GIT/">
-                        <span class="chip bg-color">GIT</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -816,13 +808,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/29/celery/">
+                <a href="/2021/03/12/%E5%B0%81%E7%A6%81%E7%99%BB%E9%99%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="celery异步框架">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="封禁登陆">
                         
-                        <span class="card-title">celery异步框架</span>
+                        <span class="card-title">封禁登陆</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -833,7 +825,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
                             </span>
                         <span class="publish-author">
                             
